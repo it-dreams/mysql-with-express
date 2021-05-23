@@ -82,6 +82,17 @@ app.get('/getpost/:id', (req, res) => {
     });
 });
 
+// Updated Post
+app.get('/updatepost/:id', (req, res) => {
+    let newTitle = 'Updated title';
+    let sql = `UPDATE posts SET title = '${newTitle}' WHERE id = ${req.params.id}`;
+    let query = db.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send('Post updated...');
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`server started at http://localhost:${port}`);
