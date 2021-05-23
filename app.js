@@ -62,6 +62,17 @@ app.get('/insertpost2', (req, res) => {
     });
 });
 
+// Select all Posts
+app.get('/getposts', (req, res) => {
+    let sql = 'SELECT * FROM posts';
+    let query = db.query(sql, (err, results) => {
+        if (err) throw err;
+        console.log(results);
+        res.send('fetched posts...');
+    });
+});
+
+
 app.listen(port, () => {
     console.log(`server started at http://localhost:${port}`);
 })
