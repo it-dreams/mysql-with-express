@@ -72,6 +72,16 @@ app.get('/getposts', (req, res) => {
     });
 });
 
+// Select single Post
+app.get('/getpost/:id', (req, res) => {
+    let sql = `SELECT * FROM posts WHERE id = ${req.params.id}`;
+    let query = db.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send('fetched single post...');
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`server started at http://localhost:${port}`);
