@@ -40,6 +40,28 @@ app.get('/createpoststable', (req, res) => {
     });
 });
 
+// Insert Post 1
+app.get('/insertpost1', (req, res) => {
+    let post = { title: 'post 1', body: 'This is a first post' };
+    let sql = 'INSERT INTO posts SET ?';
+    let query = db.query(sql, post, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send('Post 1 added...');
+    });
+});
+
+// Insert Post 2
+app.get('/insertpost2', (req, res) => {
+    let post = { title: 'post two', body: 'This is a first post' };
+    let sql = 'INSERT INTO posts SET ?';
+    let query = db.query(sql, post, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send('Post 2 added...');
+    });
+});
+
 app.listen(port, () => {
     console.log(`server started at http://localhost:${port}`);
 })
